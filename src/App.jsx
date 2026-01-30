@@ -10,9 +10,16 @@ import Experience from "./sections/Experience";
 import Testimonials from "./sections/Testimonials";
 import Contact from "./sections/Contact";
 import Footer from "./sections/Footer";
+import React from "react";
+import IntroAnimation from "./components/IntroAnimation";
 
 export default function App(){
+  const [introDone, setIntroDone] = React.useState(false);
   return(
+    <>
+    {!introDone && <IntroAnimation onFinish={()=> setIntroDone(true)} />}
+
+    {introDone && (
     <div className="relative gradient text-white">
       <CustomCursor/>
       {/* <ParticlesBackground/> */}
@@ -28,5 +35,8 @@ export default function App(){
       <Contact/>
       <Footer/>
     </div>
+    )}
+    </>
+    
   )
 }
